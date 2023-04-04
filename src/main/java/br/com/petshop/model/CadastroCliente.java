@@ -1,18 +1,33 @@
 package br.com.petshop.model;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class CadastroCliente {
+@Entity
+public class CadastroCliente implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nomeDono;
     private int documento;
     private String nomePet;
     private String endereco;
 
-    Scanner leitor = new Scanner(System.in);
+    public CadastroCliente(Integer id, String nomeDono, int documento, String nomePet, String endereco) {
+        this.id = id;
+        this.nomeDono = nomeDono;
+        this.documento = documento;
+        this.nomePet = nomePet;
+        this.endereco = endereco;
+    }
 
-    List<CadastroCliente> clientes = new ArrayList<>();
+    public CadastroCliente(){
+
+    }
 
     public String getNomeDono() {
         return nomeDono;
@@ -46,40 +61,11 @@ public class CadastroCliente {
         this.endereco = endereco;
     }
 
-    public void cadastrarCliente() {
-
-        CadastroCliente cadastroCliente = new CadastroCliente();
-
-        System.out.println("Nome Do Dono: ");
-        setNomeDono(leitor.next());
-        System.out.println("Documento: ");
-        setDocumento(leitor.nextInt());
-        System.out.println("Endereço: ");
-        setEndereco(leitor.next());
-        System.out.println("Nome do pet: ");
-        setNomePet(leitor.next());
-
+    public Integer getId() {
+        return id;
     }
 
-    public void consultarCliente() {
-        CadastroCliente buscaCliente = new CadastroCliente();
-
-        System.out.println("Entrar com o documento do cliente: ");
-        buscaCliente.setDocumento(leitor.nextInt());
-        System.out.println("---------------------------------------");
-
-        if (Objects.equals(buscaCliente, getDocumento())) {
-            System.out.println("Cliente não cadastrado, realizar o cadastro: ");
-            cadastrarCliente();
-        } else {
-
-            clientes.forEach(System.out::println);
-            //System.out.println("Documento: " + this.getDocumento());
-           // System.out.println("Nome do Dono: " + this.getNomeDono());
-            //System.out.println("Nome do Pet: " + this.getNomePet());
-            //System.out.println("Endereço: " + this.getEndereco());
-        }
-
+    public void setId(Integer id) {
+        this.id = id;
     }
-
 }

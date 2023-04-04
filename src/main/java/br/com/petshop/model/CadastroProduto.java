@@ -1,18 +1,22 @@
 package br.com.petshop.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
+@Entity
 public class CadastroProduto {
 
-    Scanner leitor = new Scanner(System.in);
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigoProduto;
     private String nomeProduto;
     private double valor;
     private int quantidade;
-    List<CadastroProduto> produtos = new ArrayList<>();
 
     public int getCodigoProduto() {
         return codigoProduto;
@@ -45,21 +49,6 @@ public class CadastroProduto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-    }
-    public void cadastrarProduto() {
-
-        CadastroProduto cadastroProduto = new CadastroProduto();
-
-        System.out.println("Codigo Produto: ");
-        cadastroProduto.setCodigoProduto(leitor.nextInt());
-        System.out.println("Nome do Produto:  ");
-        cadastroProduto.setnomeProduto(leitor.next());
-        System.out.println("Valor: ");
-        cadastroProduto.setValor(leitor.nextDouble());
-        System.out.println("Quantidade: ");
-        cadastroProduto.setQuantidade(leitor.nextInt());
-
-        produtos.add(cadastroProduto);
     }
 
     public void consultarEstoque(String produto) {

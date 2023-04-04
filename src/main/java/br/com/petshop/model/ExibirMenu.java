@@ -27,7 +27,7 @@ public class ExibirMenu {
         Scanner leitor = new Scanner(System.in);
         CadastroCliente cadastroCliente = new CadastroCliente();
         CadastroProduto cadastroProduto = new CadastroProduto();
-        RegistroDeVenda registroDeVenda = new RegistroDeVenda();
+
 
         do{
             menu();
@@ -37,16 +37,16 @@ public class ExibirMenu {
 
             switch(opcao){
                 case 1:
-                   cadastroCliente.cadastrarCliente();
+                   //cadastroCliente.cadastrarCliente();
                     break;
                 case 2:
-                    cadastroProduto.cadastrarProduto();
+                    //cadastroProduto.cadastrarProduto();
                     break;
                 case 3:
-                   cadastroCliente.consultarCliente();
+                   //cadastroCliente.consultarCliente();
                     break;
                 case 4:
-                    registroDeVenda.registrarVenda();
+
                     break;
                 case 50:
                     menu();
